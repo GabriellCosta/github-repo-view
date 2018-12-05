@@ -1,5 +1,15 @@
+import dependencies.Dependencies
+import dependencies.TestDependencies
+
 apply plugin: 'kotlin'
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
+
+    implementation Dependencies.kotlinStdlib
+
+    implementation Dependencies.retrofit
+    implementation Dependencies.okhttp
+    implementation Dependencies.okhttpLogger
+
+    testImplementation TestDependencies.jUnit
 }

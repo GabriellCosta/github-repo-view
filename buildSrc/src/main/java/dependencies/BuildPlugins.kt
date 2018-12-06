@@ -1,7 +1,7 @@
 package dependencies
 
 internal object Kotlin {
-    const val version = "1.2.71"
+    const val version = "1.3.10"
 }
 
 internal object Gradle {

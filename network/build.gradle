@@ -11,5 +11,7 @@ dependencies {
     implementation Dependencies.okhttp
     implementation Dependencies.okhttpLogger
 
+    implementation Dependencies.coroutinesRetrofitAdapter
+
     testImplementation TestDependencies.jUnit
 }

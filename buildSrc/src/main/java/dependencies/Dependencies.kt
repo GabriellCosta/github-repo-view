@@ -13,7 +13,6 @@ internal object Versions {
     const val espressoCore = "3.0.2"
     const val roboletric = "4.0"
     const val kodeinDI = "5.3.0"
-    const val coroutinesRetrofitAdapter = "0.9.2"
 
 }
 
@@ -34,8 +33,6 @@ object Dependencies {
     val kodein = "org.kodein.di:kodein-di-generic-jvm:${Versions.kodeinDI}"
     val kodeinConf = "org.kodein.di:kodein-di-conf-jvm:${Versions.kodeinDI}"
     val kodeinAndroid = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodeinDI}"
-
-    val coroutinesRetrofitAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.coroutinesRetrofitAdapter}"
 
 }
 

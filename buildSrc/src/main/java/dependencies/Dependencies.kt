@@ -13,6 +13,7 @@ internal object Versions {
     const val espressoCore = "3.0.2"
     const val roboletric = "4.0"
     const val kodeinDI = "5.3.0"
+    const val timber = "4.7.1"
 
 }
 
@@ -23,7 +24,7 @@ object Dependencies {
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     val okhttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
+    val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
     val appCompat = "androidx.appcompat:appcompat:${Versions.supportLibrary}"
     val cardView = "androidx.cardview:cardview:${Versions.supportLibrary}"
@@ -33,6 +34,8 @@ object Dependencies {
     val kodein = "org.kodein.di:kodein-di-generic-jvm:${Versions.kodeinDI}"
     val kodeinConf = "org.kodein.di:kodein-di-conf-jvm:${Versions.kodeinDI}"
     val kodeinAndroid = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodeinDI}"
+
+    val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
 }
 

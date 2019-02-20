@@ -12,6 +12,7 @@ buildscript {
     dependencies {
         classpath BuildPlugins.androidGradlePlugin
         classpath BuildPlugins.kotlinGradlePlugin
+        classpath BuildPlugins.detektPlugin
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -32,6 +33,7 @@ task clean(type: Delete) {
 subprojects {
 
     apply from: "$rootDir/tools/ktlint.gradle"
+    apply from: "$rootDir/tools/detekt.gradle"
     apply plugin: 'kotlin-android-extensions'
 
     afterEvaluate {

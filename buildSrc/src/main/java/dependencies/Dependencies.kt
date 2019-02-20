@@ -20,7 +20,7 @@ internal object Versions {
 
 object Dependencies {
 
-    val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Kotlin.version}"
+    val kotlinStdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${PluginsVersions.kotlin}"
 
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     val okhttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
@@ -46,7 +46,7 @@ object Dependencies {
 object TestDependencies {
 
     val jUnit = "junit:junit:${Versions.jUnit4}"
-    val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${Kotlin.version}"
+    val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${PluginsVersions.kotlin}"
     val assertJ = "org.assertj:assertj-core:${Versions.assertJ}"
     val mockitoKotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.mockitoKotlin}"
     val mockitoDexMaker = "com.linkedin.dexmaker:dexmaker-mockito:${Versions.mockitoDexMaker}"

@@ -14,6 +14,7 @@ internal object Versions {
     const val roboletric = "4.0"
     const val kodeinDI = "5.3.0"
     const val timber = "4.7.1"
+    const val livedata ="1.1.1"
 
 }
 
@@ -36,6 +37,9 @@ object Dependencies {
     val kodeinAndroid = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodeinDI}"
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
+
+    val livedataCore = "android.arch.lifecycle:livedata-core:${Versions.livedata}"
+    val lifecycleExtension = "android.arch.lifecycle:extensions:${Versions.livedata}"
 
 }
 

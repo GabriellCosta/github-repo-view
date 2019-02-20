@@ -1,7 +1,8 @@
 import dependencies.Dependencies
 import dependencies.TestDependencies
 
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 dependencies {
 
@@ -13,6 +14,8 @@ dependencies {
     implementation Dependencies.okhttpLogger
 
     implementation Dependencies.timber
+
+    implementation Dependencies.lifecycleExtension
 
     testImplementation TestDependencies.jUnit
 }

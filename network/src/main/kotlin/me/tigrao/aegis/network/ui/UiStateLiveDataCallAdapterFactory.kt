@@ -8,7 +8,11 @@ import java.lang.reflect.Type
 
 internal class UiStateLiveDataCallAdapterFactory : CallAdapter.Factory() {
 
-    override fun get(returnType: Type, annotations: Array<Annotation>, retrofit: Retrofit): CallAdapter<*, *>? {
+    override fun get(
+        returnType: Type,
+        annotations: Array<Annotation>,
+        retrofit: Retrofit
+    ): CallAdapter<*, *>? {
         return createCallAdapter(returnType)
     }
 

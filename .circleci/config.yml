@@ -9,7 +9,7 @@ aliases:
       - jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
 
 defaults: &defaults
-    working_directory: ~/aegis
+    working_directory: ~/github-repo-view
 
 android_defaults: &android_defaults
     <<: *defaults

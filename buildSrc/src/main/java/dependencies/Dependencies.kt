@@ -49,6 +49,8 @@ object Dependencies {
 
     val imageFetcher = "com.github.bumptech.glide:glide:${Versions.imageFetcher}"
 
+    val constraintLayout = "com.android.support.constraint:constraint-layout:${Versions.constraintLayout}"
+
 }
 
 object TestDependencies {

@@ -5,4 +5,6 @@ dependencies {
     implementation project(':network')
 
     implementation dependencies.Dependencies.constraintLayout
+    implementation dependencies.Dependencies.recyclerView
+    implementation dependencies.Dependencies.appCompat
 }

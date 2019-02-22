@@ -1,6 +1,5 @@
 package me.tigrao.aegis.network
 
-import br.com.odete.network.BuildConfig
 import com.google.gson.Gson
 import me.tigrao.aegis.network.ui.UiStateLiveDataCallAdapterFactory
 import okhttp3.OkHttpClient

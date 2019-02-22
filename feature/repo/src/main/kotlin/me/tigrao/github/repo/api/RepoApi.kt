@@ -8,6 +8,5 @@ import retrofit2.http.GET
 internal interface RepoApi {
 
     @GET("search/repositories?q=language:kotlin&sort=stars")
-    fun fetchRepositories() : LiveData<UiState<RepositoriesResponseDTO>>
-
+    fun fetchRepositories(): LiveData<UiState<RepositoriesResponseDTO>>
 }

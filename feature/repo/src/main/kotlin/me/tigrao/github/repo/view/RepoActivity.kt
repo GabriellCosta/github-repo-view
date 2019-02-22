@@ -31,6 +31,5 @@ class RepoActivity : AppCompatActivity() {
         val rv = findViewById<RecyclerView>(R.id.rv_repo)
         rv.adapter = RepoAdapter(collection)
         rv.layoutManager = LinearLayoutManager(this)
-
     }
 }

@@ -4,6 +4,12 @@ import dependencies.TestDependencies
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+android {
+    defaultConfig {
+        buildConfigField "String", "API_URL", "\"\""
+    }
+}
+
 dependencies {
 
     implementation Dependencies.kotlinStdlib

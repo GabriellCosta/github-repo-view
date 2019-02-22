@@ -2,6 +2,7 @@ package me.tigrao.aegis.network
 
 import br.com.odete.network.BuildConfig
 import com.google.gson.Gson
+import me.tigrao.aegis.network.ui.UiStateLiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,6 +19,7 @@ object NetworkClient {
             .baseUrl(BuildConfig.API_URL)
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(Gson()))
+            .addCallAdapterFactory(UiStateLiveDataCallAdapterFactory())
             .build()
 
     private fun buildOkhttpClient() =

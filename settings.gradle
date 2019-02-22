@@ -1,4 +1,4 @@
 include ':app',
         ':network',
-        ':styleguide'
+        ':styleguide',
         ':feature:repo'

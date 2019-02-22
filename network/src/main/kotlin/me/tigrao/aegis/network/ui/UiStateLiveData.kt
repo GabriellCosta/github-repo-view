@@ -1,8 +1,8 @@
 package me.tigrao.aegis.network.ui
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
 
 class UiStateLiveData<T> : MutableLiveData<UiState<T>>() {
 
@@ -20,7 +20,8 @@ class UiStateLiveData<T> : MutableLiveData<UiState<T>>() {
     }
 
     fun <R> swapSource(
-        source: LiveData<UiState<R>>, converter: UiTransformer<R, T>): UiStateLiveData<T> {
+        source: LiveData<UiState<R>>, converter: UiTransformer<R, T>
+    ): UiStateLiveData<T> {
         swapSource(source) {
             converter.map(it)
         }

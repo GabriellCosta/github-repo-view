@@ -1,6 +1,6 @@
 package me.tigrao.aegis.network.ui
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import retrofit2.CallAdapter
 import retrofit2.Retrofit
 import java.lang.reflect.ParameterizedType
@@ -38,7 +38,7 @@ internal class UiStateLiveDataCallAdapterFactory : CallAdapter.Factory() {
 
     private fun getObservableType(returnType: Type) =
         CallAdapter.Factory.getParameterUpperBound(0, returnType as ParameterizedType)
-            as? ParameterizedType
+                as? ParameterizedType
 
     private fun isUiState(returnType: ParameterizedType?): Boolean {
         return returnType?.rawType == UiState::class.java

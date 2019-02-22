@@ -1,6 +1,6 @@
 package me.tigrao.aegis.network.ui
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import retrofit2.Call
 import retrofit2.CallAdapter
 import java.lang.reflect.Type

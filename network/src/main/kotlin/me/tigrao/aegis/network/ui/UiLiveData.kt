@@ -1,6 +1,6 @@
 package me.tigrao.aegis.network.ui
 
-import android.arch.lifecycle.MutableLiveData
+import androidx.lifecycle.MutableLiveData
 import retrofit2.Call
 import java.util.concurrent.atomic.AtomicBoolean
 

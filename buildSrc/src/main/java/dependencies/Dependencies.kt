@@ -14,7 +14,10 @@ internal object Versions {
     const val roboletric = "4.0"
     const val kodeinDI = "5.3.0"
     const val timber = "4.7.1"
-    const val livedata ="1.1.1"
+    const val livedata ="2.0.0"
+    const val constraintLayout= "1.1.2"
+    const val gson = "2.8.5"
+    const val imageFetcher = "4.9.0"
 
 }
 
@@ -26,6 +29,7 @@ object Dependencies {
     val okhttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    val gson = "com.google.code.gson:gson:${Versions.gson}"
 
     val appCompat = "androidx.appcompat:appcompat:${Versions.supportLibrary}"
     val cardView = "androidx.cardview:cardview:${Versions.supportLibrary}"
@@ -38,8 +42,12 @@ object Dependencies {
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 
-    val livedataCore = "android.arch.lifecycle:livedata-core:${Versions.livedata}"
-    val lifecycleExtension = "android.arch.lifecycle:extensions:${Versions.livedata}"
+    val viewModel = "androidx.lifecycle:lifecycle-viewmodel:${Versions.livedata}"
+    val lifecycle = "androidx.lifecycle:lifecycle-livedata:${Versions.livedata}"
+
+    val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+
+    val imageFetcher = "com.github.bumptech.glide:glide:${Versions.imageFetcher}"
 
 }
 

@@ -32,6 +32,7 @@ internal class RepoAdapter(private val collection: List<ListItemVO>) :
 
         Glide.with(holder.avatar)
             .load(item.avatar)
+            .placeholder(R.drawable.ic_git)
             .into(holder.avatar)
     }
 

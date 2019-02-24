@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
+import me.tigrao.github.repo.helper.bind
 
 internal class RepoAdapter :
     PagedListAdapter<ListItemVO, RepoAdapter.RepoViewHolder>(RepoDiffConfig()) {
@@ -36,10 +37,10 @@ internal class RepoAdapter :
     }
 
     internal class RepoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val avatar: ImageView = itemView.findViewById(R.id.image_list_repo_avatar)
-        val title: TextView = itemView.findViewById(R.id.txt_list_repo_title)
-        val description: TextView = itemView.findViewById(R.id.txt_list_repo_description)
-        val stars: TextView = itemView.findViewById(R.id.txt_list_repo_stars)
-        val forks: TextView = itemView.findViewById(R.id.txt_list_repo_fork)
+        val avatar by bind<ImageView>(R.id.image_list_repo_avatar)
+        val title by bind<TextView>(R.id.txt_list_repo_title)
+        val description by bind<TextView>(R.id.txt_list_repo_description)
+        val stars by bind<TextView>(R.id.txt_list_repo_stars)
+        val forks by bind<TextView>(R.id.txt_list_repo_fork)
     }
 }

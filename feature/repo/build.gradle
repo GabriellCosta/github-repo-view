@@ -9,4 +9,6 @@ dependencies {
     implementation dependencies.Dependencies.appCompat
     implementation dependencies.Dependencies.gson
     implementation dependencies.Dependencies.imageFetcher
+
+    implementation dependencies.Dependencies.paging
 }

@@ -13,6 +13,7 @@ import me.tigrao.aegis.network.ui.observeOnSuccess
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.viewmodel.RepoViewModel
+import androidx.recyclerview.widget.DividerItemDecoration
 
 class RepoActivity : AppCompatActivity() {
 
@@ -35,7 +36,7 @@ class RepoActivity : AppCompatActivity() {
         }
             .observeOnLoading(this) {
                 Toast.makeText(this, "Loading....", Toast.LENGTH_LONG).show()
-        }
+            }
             .observeOnError(this) {
                 Toast.makeText(this, "Deu Ruim", Toast.LENGTH_LONG).show()
             }
@@ -44,8 +45,10 @@ class RepoActivity : AppCompatActivity() {
     private fun onSuccess(collection: PagedList<ListItemVO>) {
         val rv = findViewById<RecyclerView>(R.id.rv_repo)
         val repoAdapter = RepoAdapter()
+        val linearLayoutManager = LinearLayoutManager(this)
+        rv.addItemDecoration(CustomItemDecoration())
         rv.adapter = repoAdapter
         repoAdapter.submitList(collection)
-        rv.layoutManager = LinearLayoutManager(this)
+        rv.layoutManager = linearLayoutManager
     }
 }

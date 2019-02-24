@@ -3,6 +3,7 @@ package me.tigrao.aegis.network.ui
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
+import kotlinx.coroutines.Deferred
 
 fun <RESPONSE> LiveData<UiState<RESPONSE>>.observeOnLoading(
     owner: LifecycleOwner, observer: () -> Unit
@@ -38,4 +39,21 @@ fun <RESPONSE> LiveData<UiState<RESPONSE>>.observeOnError(
         if (it is UiError) observer.invoke(it.errorData)
     })
     return this
+}
+
+suspend inline fun <R> Deferred<R>.uiAwait(
+    uiStateLiveData: UiStateLiveData<Unit>,
+    action: (R) -> Unit
+) {
+    uiStateLiveData.postValue(UiLoading)
+
+    try {
+        val result = this.await()
+
+        action(result)
+
+        uiStateLiveData.postValue(UiSuccess(Unit))
+    } catch (e: Exception) {
+        uiStateLiveData.postValue(UiError(ErrorData(e)))
+    }
 }

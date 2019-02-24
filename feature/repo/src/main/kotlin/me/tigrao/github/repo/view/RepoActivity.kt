@@ -13,9 +13,10 @@ import me.tigrao.aegis.network.ui.observeOnSuccess
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.viewmodel.RepoViewModel
-import androidx.recyclerview.widget.DividerItemDecoration
 
 class RepoActivity : AppCompatActivity() {
+
+    private val recyclerView: RecyclerView = findViewById(R.id.rv_repo)
 
     private val viewModel: RepoViewModel = RepoViewModel()
 
@@ -43,12 +44,11 @@ class RepoActivity : AppCompatActivity() {
     }
 
     private fun onSuccess(collection: PagedList<ListItemVO>) {
-        val rv = findViewById<RecyclerView>(R.id.rv_repo)
         val repoAdapter = RepoAdapter()
         val linearLayoutManager = LinearLayoutManager(this)
-        rv.addItemDecoration(CustomItemDecoration())
-        rv.adapter = repoAdapter
+        recyclerView.addItemDecoration(CustomItemDecoration())
+        recyclerView.adapter = repoAdapter
         repoAdapter.submitList(collection)
-        rv.layoutManager = linearLayoutManager
+        recyclerView.layoutManager = linearLayoutManager
     }
 }

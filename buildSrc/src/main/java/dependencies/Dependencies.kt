@@ -18,6 +18,8 @@ internal object Versions {
     const val constraintLayout= "1.1.2"
     const val gson = "2.8.5"
     const val imageFetcher = "4.9.0"
+    const val courotines = "1.1.1"
+    const val paging = "2.1.0"
 
 }
 
@@ -48,7 +50,13 @@ object Dependencies {
     val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     val imageFetcher = "com.github.bumptech.glide:glide:${Versions.imageFetcher}"
-    
+
+    val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.courotines}"
+    val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.courotines}"
+    val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+
+    val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+
 }
 
 object TestDependencies {

@@ -23,5 +23,9 @@ dependencies {
 
     implementation Dependencies.lifecycle
 
+    api Dependencies.coroutinesCore
+    api Dependencies.coroutinesAndroid
+    implementation Dependencies.coroutinesAdapter
+
     testImplementation TestDependencies.jUnit
 }

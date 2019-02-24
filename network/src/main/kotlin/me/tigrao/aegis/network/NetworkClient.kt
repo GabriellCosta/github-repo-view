@@ -1,6 +1,7 @@
 package me.tigrao.aegis.network
 
 import com.google.gson.Gson
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import me.tigrao.aegis.network.ui.UiStateLiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -19,6 +20,7 @@ object NetworkClient {
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(Gson()))
             .addCallAdapterFactory(UiStateLiveDataCallAdapterFactory())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
 
     private fun buildOkhttpClient() =

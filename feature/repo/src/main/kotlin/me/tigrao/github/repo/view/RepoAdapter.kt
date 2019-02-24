@@ -5,13 +5,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
 
-internal class RepoAdapter(private val collection: List<ListItemVO>) :
-    RecyclerView.Adapter<RepoAdapter.RepoViewHolder>() {
+internal class RepoAdapter :
+    PagedListAdapter<ListItemVO, RepoAdapter.RepoViewHolder>(RepoDiffConfig()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         val layout = LayoutInflater.from(parent.context)
@@ -20,10 +21,8 @@ internal class RepoAdapter(private val collection: List<ListItemVO>) :
         return RepoViewHolder(layout)
     }
 
-    override fun getItemCount() = collection.size
-
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
-        val item = collection[position]
+        val item = getItem(position)!!
 
         holder.title.text = item.title
         holder.description.text = item.description

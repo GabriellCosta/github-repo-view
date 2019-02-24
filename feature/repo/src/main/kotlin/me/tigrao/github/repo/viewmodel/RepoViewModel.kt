@@ -1,29 +1,26 @@
 package me.tigrao.github.repo.viewmodel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import me.tigrao.aegis.network.NetworkClient
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import me.tigrao.aegis.network.ui.UiStateLiveData
-import me.tigrao.github.repo.api.RepoApi
-import me.tigrao.github.repo.api.RepoRepository
+import me.tigrao.github.repo.api.DataSourceFactory
 import me.tigrao.github.repo.data.ListItemVO
+
+private const val PAGE_SIZE = 3
 
 internal class RepoViewModel : ViewModel() {
 
-    private val repository = RepoRepository(NetworkClient.getApi(RepoApi::class.java))
+    val uiState = UiStateLiveData<Unit>()
+    private val factory = DataSourceFactory(uiState)
 
-    val uiState = UiStateLiveData<List<ListItemVO>>()
+    fun fetchRepositories(): LiveData<PagedList<ListItemVO>> {
+        val config = PagedList.Config.Builder()
+            .setPageSize(PAGE_SIZE)
+            .setEnablePlaceholders(false)
+            .build()
 
-    fun fetchRepositories() {
-        uiState.swapSource(repository.fetchRepositories()) {
-            it.items.map { map ->
-                ListItemVO(
-                    map.owner.avatarUrl,
-                    map.fullName,
-                    map.stargazersCount,
-                    map.forksCount,
-                    map.description
-                )
-            }
-        }
+        return LivePagedListBuilder(factory, config).build()
     }
 }

@@ -12,4 +12,5 @@ dependencies {
     implementation dependencies.Dependencies.imageFetcher
 
     implementation dependencies.Dependencies.paging
+    implementation dependencies.Dependencies.extensions
 }

@@ -67,5 +67,10 @@ subprojects {
         }
 
 
+        dependencies {
+            implementation 'org.kodein.di:kodein-di-generic-jvm:6.1.0'
+            implementation 'org.kodein.di:kodein-di-framework-android-x:6.1.0'
+
+        }
     }
 }

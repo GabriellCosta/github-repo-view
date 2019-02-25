@@ -15,6 +15,11 @@ class CustomItemDecoration : RecyclerView.ItemDecoration() {
     ) {
         super.getItemOffsets(outRect, view, parent, state)
 
-        outRect.top = parent.resources.getDimensionPixelSize(R.dimen.list_card_separation)
+        val dimen = parent.resources.getDimensionPixelSize(R.dimen.list_card_separation)
+
+        outRect.top = dimen
+        outRect.right = dimen
+        outRect.left = dimen
+        outRect.bottom = dimen
     }
 }

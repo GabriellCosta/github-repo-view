@@ -5,6 +5,7 @@ import me.tigrao.aegis.network.NetworkClient
 import me.tigrao.github.repo.api.DataSourceFactory
 import me.tigrao.github.repo.api.RepoApi
 import me.tigrao.github.repo.api.RepoRepository
+import me.tigrao.github.repo.view.LayoutManagerFactory
 import me.tigrao.github.repo.view.RepoAdapter
 import me.tigrao.github.repo.view.ViewModelFactory
 import me.tigrao.github.repo.viewmodel.RepoViewModel
@@ -40,5 +41,9 @@ val repoModule = Kodein.Module("repoModule") {
 
     bind<RepoViewModel>() with provider {
         RepoViewModel(instance())
+    }
+
+    bind<LayoutManagerFactory>() with scoped(ActivityRetainedScope).singleton {
+        LayoutManagerFactory()
     }
 }

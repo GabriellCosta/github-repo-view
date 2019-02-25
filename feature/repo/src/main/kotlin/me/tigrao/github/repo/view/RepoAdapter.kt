@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.helper.bind
@@ -42,6 +43,7 @@ internal class RepoAdapter :
 
             Glide.with(avatar)
                 .load(item.avatar)
+                .apply(RequestOptions.circleCropTransform())
                 .placeholder(R.drawable.ic_git)
                 .into(avatar)
         }

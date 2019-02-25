@@ -1,20 +1,15 @@
 package me.tigrao.github.repo.view
 
 import android.os.Bundle
-import android.os.Parcelable
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.paging.PagedList
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.tigrao.aegis.network.ui.observeOnError
 import me.tigrao.aegis.network.ui.observeOnLoading
 import me.tigrao.aegis.network.ui.observeOnSuccess
 import me.tigrao.github.repo.R
-import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.helper.bind
 import me.tigrao.github.repo.viewmodel.RepoViewModel
 import org.kodein.di.KodeinAware
@@ -30,6 +25,7 @@ class RepoActivity : AppCompatActivity(), KodeinAware {
 
     private val viewModel: RepoViewModel by viewModel()
     private val repoAdapter by instance<RepoAdapter>()
+    private val layoutMangerFactory by instance<LayoutManagerFactory>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,11 +53,9 @@ class RepoActivity : AppCompatActivity(), KodeinAware {
             }
     }
 
-    private val linearLayoutManager = LinearLayoutManager(this)
-
     private fun prepareList() {
         recyclerView.addItemDecoration(CustomItemDecoration())
         recyclerView.adapter = repoAdapter
-        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.layoutManager = layoutMangerFactory.createLayoutManager(this)
     }
 }

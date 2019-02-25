@@ -1,6 +1,8 @@
 package me.tigrao.github.repo.view
 
 import android.os.Bundle
+import android.os.Parcelable
+import android.os.PersistableBundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,19 +17,26 @@ import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.helper.bind
 import me.tigrao.github.repo.viewmodel.RepoViewModel
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 
-class RepoActivity : AppCompatActivity() {
+class RepoActivity : AppCompatActivity(), KodeinAware {
+
+    override val kodein by kodein()
 
     private val recyclerView by bind<RecyclerView>(R.id.rv_repo)
     private val loadingView by bind<View>(R.id.loading_repo)
-    private val repoAdapter = RepoAdapter()
 
-    private val viewModel: RepoViewModel = RepoViewModel()
+    private val viewModel: RepoViewModel by viewModel()
+    private val repoAdapter by instance<RepoAdapter>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_repo)
+
+        listState = savedInstanceState?.getParcelable("list")
 
         prepareState()
         viewModel.fetchRepositories().observe(this, Observer {
@@ -49,11 +58,26 @@ class RepoActivity : AppCompatActivity() {
             }
     }
 
+    private val linearLayoutManager = LinearLayoutManager(this)
+
     private fun onSuccess(collection: PagedList<ListItemVO>) {
-        val linearLayoutManager = LinearLayoutManager(this)
         recyclerView.addItemDecoration(CustomItemDecoration())
         recyclerView.adapter = repoAdapter
-        repoAdapter.submitList(collection)
         recyclerView.layoutManager = linearLayoutManager
+
+        repoAdapter.submitList(collection)
+
+        listState?.let {
+            linearLayoutManager.onRestoreInstanceState(listState)
+        }
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putParcelable("list", linearLayoutManager.onSaveInstanceState())
+    }
+
+    private var listState: Parcelable? = null
+
 }

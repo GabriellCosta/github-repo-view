@@ -36,12 +36,11 @@ class RepoActivity : AppCompatActivity(), KodeinAware {
 
         setContentView(R.layout.activity_repo)
 
-        listState = savedInstanceState?.getParcelable("list")
-
+        prepareList()
         prepareState()
-        viewModel.fetchRepositories().observe(this, Observer {
-            onSuccess(it)
-        })
+
+        viewModel.fetchRepositories()
+            .observe(this, Observer(repoAdapter::submitList))
     }
 
     private fun prepareState() {
@@ -60,24 +59,9 @@ class RepoActivity : AppCompatActivity(), KodeinAware {
 
     private val linearLayoutManager = LinearLayoutManager(this)
 
-    private fun onSuccess(collection: PagedList<ListItemVO>) {
+    private fun prepareList() {
         recyclerView.addItemDecoration(CustomItemDecoration())
         recyclerView.adapter = repoAdapter
         recyclerView.layoutManager = linearLayoutManager
-
-        repoAdapter.submitList(collection)
-
-        listState?.let {
-            linearLayoutManager.onRestoreInstanceState(listState)
-        }
     }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        outState.putParcelable("list", linearLayoutManager.onSaveInstanceState())
-    }
-
-    private var listState: Parcelable? = null
-
 }

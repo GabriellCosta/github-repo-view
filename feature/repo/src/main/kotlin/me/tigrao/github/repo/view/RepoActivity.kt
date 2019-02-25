@@ -42,9 +42,7 @@ class RepoActivity : AppCompatActivity() {
             loadingView.visibility = View.GONE
         }
             .observeOnLoading(this) {
-                if (repoAdapter.itemCount == 0) {
-                    loadingView.visibility = View.VISIBLE
-                }
+                loadingView.visibility = View.VISIBLE
             }
             .observeOnError(this) {
                 Toast.makeText(this, "Deu Ruim", Toast.LENGTH_LONG).show()

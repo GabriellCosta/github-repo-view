@@ -5,6 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import me.tigrao.aegis.network.ui.observeOnError
 import me.tigrao.aegis.network.ui.observeOnLoading
@@ -54,8 +56,14 @@ class RepoActivity : AppCompatActivity(), KodeinAware {
     }
 
     private fun prepareList() {
-        recyclerView.addItemDecoration(CustomItemDecoration())
+        val createLayoutManager = layoutMangerFactory.createLayoutManager(this)
+
+        val dividerItemDecoration = DividerItemDecoration(
+            recyclerView.context,
+            createLayoutManager.orientation
+        )
+        recyclerView.addItemDecoration(dividerItemDecoration)
         recyclerView.adapter = repoAdapter
-        recyclerView.layoutManager = layoutMangerFactory.createLayoutManager(this)
+        recyclerView.layoutManager = createLayoutManager
     }
 }

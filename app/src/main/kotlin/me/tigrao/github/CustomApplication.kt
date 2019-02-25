@@ -10,6 +10,5 @@ class CustomApplication : Application(), KodeinAware {
     override val kodein: Kodein = Kodein {
 
         import(repoModule)
-
     }
 }

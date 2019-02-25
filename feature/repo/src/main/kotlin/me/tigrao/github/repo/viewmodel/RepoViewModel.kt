@@ -4,13 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import me.tigrao.aegis.network.ui.UiStateLiveData
 import me.tigrao.github.repo.api.DataSourceFactory
 import me.tigrao.github.repo.data.ListItemVO
 
 private const val PAGE_SIZE = 3
 
-internal class RepoViewModel(private val factory: DataSourceFactory) : ViewModel() {
+internal class RepoViewModel(factory: DataSourceFactory) : ViewModel() {
 
     val uiState = factory.dataSourceLiveData
     private val pagedLiveData: LiveData<PagedList<ListItemVO>>

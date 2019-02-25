@@ -10,10 +10,9 @@ import me.tigrao.github.repo.data.ListItemVO
 
 private const val PAGE_SIZE = 3
 
-internal class RepoViewModel : ViewModel() {
+internal class RepoViewModel(private val factory: DataSourceFactory) : ViewModel() {
 
-    val uiState = UiStateLiveData<Unit>()
-    private val factory = DataSourceFactory(uiState)
+    val uiState = factory.dataSourceLiveData
 
     fun fetchRepositories(): LiveData<PagedList<ListItemVO>> {
         val config = PagedList.Config.Builder()

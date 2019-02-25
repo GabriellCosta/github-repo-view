@@ -13,13 +13,17 @@ private const val PAGE_SIZE = 3
 internal class RepoViewModel(private val factory: DataSourceFactory) : ViewModel() {
 
     val uiState = factory.dataSourceLiveData
+    private val pagedLiveData: LiveData<PagedList<ListItemVO>>
 
-    fun fetchRepositories(): LiveData<PagedList<ListItemVO>> {
+    init {
         val config = PagedList.Config.Builder()
             .setPageSize(PAGE_SIZE)
-            .setEnablePlaceholders(false)
+            .setEnablePlaceholders(true)
             .build()
+        pagedLiveData = LivePagedListBuilder(factory, config).build()
+    }
 
-        return LivePagedListBuilder(factory, config).build()
+    fun fetchRepositories(): LiveData<PagedList<ListItemVO>> {
+        return pagedLiveData
     }
 }

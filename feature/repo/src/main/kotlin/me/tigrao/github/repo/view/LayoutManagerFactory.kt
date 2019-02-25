@@ -12,7 +12,7 @@ private const val SPAN_COUNT = 2
 
 internal class LayoutManagerFactory {
 
-    fun createLayoutManager(context: Context): RecyclerView.LayoutManager {
+    fun createLayoutManager(context: Context): LinearLayoutManager {
         return if (isDeviceInNormalOrientation(context)) {
             LinearLayoutManager(context)
         } else {

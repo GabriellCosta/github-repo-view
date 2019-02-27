@@ -20,8 +20,8 @@
     tools:src="@tools:sample/avatars"/>
 
   <TextView
+    style="@style/Text.Title"
     android:id="@+id/txt_list_repo_title"
-    android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="24dp"
@@ -29,13 +29,13 @@
     android:layout_marginEnd="8dp"
     android:ellipsize="end"
     android:maxLines="1"
-    android:textSize="16sp"
     app:layout_constraintEnd_toStartOf="@+id/txt_list_repo_stars"
     app:layout_constraintStart_toEndOf="@+id/image_list_repo_avatar"
     app:layout_constraintTop_toTopOf="parent"
     tools:text="JL Repository"/>
 
   <TextView
+    style="@style/Text.Subtitle"
     android:id="@+id/txt_list_repo_description"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
@@ -44,9 +44,7 @@
     android:layout_marginStart="12dp"
     android:layout_marginEnd="16dp"
     android:ellipsize="end"
-    android:lineSpacingExtra="4dp"
     android:maxLines="2"
-    android:textSize="14sp"
     app:layout_constraintBottom_toTopOf="@+id/view_repo_item_separator"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/image_list_repo_avatar"
@@ -66,37 +64,33 @@
 
   <TextView
     android:id="@+id/txt_list_repo_author"
+    style="@style/DrawableText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="12dp"
-    android:drawablePadding="8dp"
     android:drawableStart="@drawable/ic_author_repository"
-    android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     tools:text="Jennifer Lawarence"/>
 
   <TextView
     android:id="@+id/txt_list_repo_stars"
+    style="@style/DrawableText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="24dp"
-    android:drawablePadding="8dp"
     android:drawableStart="@drawable/ic_favorite"
-    android:gravity="center"
-    android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/txt_list_repo_fork"
     tools:text="589"/>
 
   <TextView
     android:id="@+id/txt_list_repo_fork"
+    style="@style/DrawableText"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginEnd="16dp"
-    android:drawablePadding="8dp"
     android:drawableStart="@drawable/ic_fork"
-    android:textSize="14sp"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     tools:text="3,308"/>

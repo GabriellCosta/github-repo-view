@@ -4,16 +4,17 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
-  android:layout_height="108dp"
-  android:padding="8dp"
+  android:layout_height="140dp"
+  android:paddingBottom="16dp"
+  android:paddingStart="16dp"
   android:orientation="vertical">
 
   <ImageView
     android:id="@+id/image_list_repo_avatar"
-    android:layout_width="wrap_content"
-    android:layout_height="64dp"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_marginTop="24dp"
     android:importantForAccessibility="no"
-    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:src="@tools:sample/avatars"/>
@@ -23,41 +24,69 @@
     android:textStyle="bold"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginStart="12dp"
     android:layout_marginEnd="8dp"
     android:ellipsize="end"
     android:maxLines="1"
     android:textSize="16sp"
-    app:layout_constraintBottom_toTopOf="@+id/txt_list_repo_description"
     app:layout_constraintEnd_toStartOf="@+id/txt_list_repo_stars"
     app:layout_constraintStart_toEndOf="@+id/image_list_repo_avatar"
     app:layout_constraintTop_toTopOf="parent"
-    tools:text="Ugdemy/KotlinUdemy"/>
+    tools:text="JL Repository"/>
 
   <TextView
     android:id="@+id/txt_list_repo_description"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="18dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="16dp"
     android:ellipsize="end"
+    android:lineSpacingExtra="4dp"
     android:maxLines="2"
-    app:layout_constraintBottom_toBottomOf="parent"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toTopOf="@+id/view_repo_item_separator"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/image_list_repo_avatar"
     app:layout_constraintTop_toBottomOf="@+id/txt_list_repo_title"
     tools:text="Learn how to make online games, and apps for Android O, like Pokémon , twitter,Tic Tac Toe, and notepad using Kotlin"/>
 
+  <View
+    android:id="@+id/view_repo_item_separator"
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:layout_marginTop="18dp"
+    android:layout_marginBottom="14dp"
+    android:background="#D9D9D9"
+    app:layout_constraintBottom_toTopOf="@+id/txt_list_repo_stars"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"/>
+
+  <TextView
+    android:id="@+id/txt_list_repo_author"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="12dp"
+    android:drawablePadding="8dp"
+    android:drawableStart="@drawable/ic_author_repository"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    tools:text="Jennifer Lawarence"/>
+
   <TextView
     android:id="@+id/txt_list_repo_stars"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="16dp"
+    android:layout_marginEnd="24dp"
     android:drawablePadding="8dp"
     android:drawableStart="@drawable/ic_favorite"
     android:gravity="center"
-    app:layout_constraintBottom_toTopOf="@+id/txt_list_repo_description"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toStartOf="@+id/txt_list_repo_fork"
-    app:layout_constraintTop_toTopOf="parent"
     tools:text="589"/>
 
   <TextView
@@ -67,9 +96,9 @@
     android:layout_marginEnd="16dp"
     android:drawablePadding="8dp"
     android:drawableStart="@drawable/ic_fork"
-    app:layout_constraintBottom_toTopOf="@+id/txt_list_repo_description"
+    android:textSize="14sp"
+    app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
     tools:text="3,308"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

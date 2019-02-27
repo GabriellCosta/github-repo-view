@@ -10,7 +10,8 @@ internal class RepoTransformer : UiTransformer<RepositoriesResponseDTO, List<Lis
         return parameter.items.map { map ->
             ListItemVO(
                 map.owner.avatarUrl,
-                map.fullName,
+                map.name,
+                map.owner.login,
                 map.stargazersCount,
                 map.forksCount,
                 map.description ?: ""

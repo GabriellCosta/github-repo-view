@@ -20,28 +20,27 @@
     tools:src="@tools:sample/avatars"/>
 
   <TextView
-    style="@style/Text.Title"
     android:id="@+id/txt_list_repo_title"
+    style="@style/Text.Title"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="24dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="32dp"
     android:ellipsize="end"
     android:maxLines="1"
-    app:layout_constraintEnd_toStartOf="@+id/txt_list_repo_stars"
+    app:layout_constraintBottom_toTopOf="@+id/txt_list_repo_description"
+    app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/image_list_repo_avatar"
     app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_chainStyle="packed"
     tools:text="JL Repository"/>
 
   <TextView
-    style="@style/Text.Subtitle"
     android:id="@+id/txt_list_repo_description"
+    style="@style/Text.Subtitle"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginBottom="18dp"
-    android:layout_marginStart="12dp"
+    android:layout_marginStart="16dp"
     android:layout_marginEnd="16dp"
     android:ellipsize="end"
     android:maxLines="2"
@@ -49,13 +48,13 @@
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/image_list_repo_avatar"
     app:layout_constraintTop_toBottomOf="@+id/txt_list_repo_title"
+    app:layout_constraintVertical_chainStyle="packed"
     tools:text="Learn how to make online games, and apps for Android O, like Pokémon , twitter,Tic Tac Toe, and notepad using Kotlin"/>
 
   <View
     android:id="@+id/view_repo_item_separator"
     android:layout_width="match_parent"
     android:layout_height="0.5dp"
-    android:layout_marginTop="18dp"
     android:layout_marginBottom="14dp"
     android:background="#D9D9D9"
     app:layout_constraintBottom_toTopOf="@+id/txt_list_repo_stars"

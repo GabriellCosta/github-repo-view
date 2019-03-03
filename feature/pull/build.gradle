@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation project(':network')
+    implementation project(':styleguide')
+
+    implementation dependencies.Dependencies.constraintLayout
+    implementation dependencies.Dependencies.recyclerView
+    implementation dependencies.Dependencies.cardView
+    implementation dependencies.Dependencies.appCompat
+    implementation dependencies.Dependencies.gson
+    implementation dependencies.Dependencies.imageFetcher
+
+    implementation dependencies.Dependencies.paging
+    implementation dependencies.Dependencies.extensions
+}

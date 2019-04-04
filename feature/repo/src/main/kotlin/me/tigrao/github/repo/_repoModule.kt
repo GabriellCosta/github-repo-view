@@ -5,6 +5,7 @@ import me.tigrao.aegis.network.NetworkClient
 import me.tigrao.github.repo.api.DataSourceFactory
 import me.tigrao.github.repo.api.RepoApi
 import me.tigrao.github.repo.api.RepoRepository
+import me.tigrao.github.repo.api.RepoRepositoryImpl
 import me.tigrao.github.repo.view.LayoutManagerFactory
 import me.tigrao.github.repo.view.RepoAdapter
 import me.tigrao.github.repo.view.ViewModelFactory
@@ -36,7 +37,7 @@ val repoModule = Kodein.Module("repoModule") {
     }
 
     bind<RepoRepository>() with singleton {
-        RepoRepository(instance())
+        RepoRepositoryImpl(instance())
     }
 
     bind<RepoViewModel>() with provider {

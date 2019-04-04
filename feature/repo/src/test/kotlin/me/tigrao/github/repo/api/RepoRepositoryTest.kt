@@ -10,7 +10,7 @@ internal class RepoRepositoryTest {
 
     val api = mock<RepoApi>()
 
-    val repository = RepoRepository(api)
+    val repository: RepoRepository = RepoRepositoryImpl(api)
 
     @Test
     fun givenARepositorySearch_WhenSuccess_ShouldDoItSortedByStars() {

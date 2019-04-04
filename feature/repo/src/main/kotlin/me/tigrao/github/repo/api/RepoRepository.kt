@@ -1,6 +1,9 @@
 package me.tigrao.github.repo.api
 
-internal class RepoRepository(private val api: RepoApi) {
+import kotlinx.coroutines.Deferred
+import me.tigrao.github.repo.data.RepositoriesResponseDTO
 
-    fun fetchRepositories(page: Int) = api.fetchRepositoriesAsync("language:kotlin", "stars", page)
+internal interface RepoRepository {
+
+    fun fetchRepositories(page: Int): Deferred<RepositoriesResponseDTO>
 }

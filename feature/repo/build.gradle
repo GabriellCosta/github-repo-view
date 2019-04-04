@@ -14,4 +14,7 @@ dependencies {
 
     implementation dependencies.Dependencies.paging
     implementation dependencies.Dependencies.extensions
+
+    testImplementation dependencies.TestDependencies.jUnit
+    testImplementation dependencies.TestDependencies.mockitoKotlin
 }

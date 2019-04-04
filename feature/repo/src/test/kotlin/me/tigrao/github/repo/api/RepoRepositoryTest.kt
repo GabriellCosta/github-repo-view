@@ -6,6 +6,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Test
 
+@Suppress("DeferredResultUnused")
 internal class RepoRepositoryTest {
 
     val api = mock<RepoApi>()

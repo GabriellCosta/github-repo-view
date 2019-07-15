@@ -2,13 +2,19 @@ package me.tigrao.github
 
 import android.app.Application
 import me.tigrao.github.repo.repoModule
-import org.kodein.di.Kodein
-import org.kodein.di.KodeinAware
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
-class CustomApplication : Application(), KodeinAware {
+class CustomApplication : Application() {
 
-    override val kodein: Kodein = Kodein {
+    override fun onCreate() {
+        super.onCreate()
 
-        import(repoModule)
+        startKoin {
+            // Android context
+            androidContext(this@CustomApplication)
+            // modules
+            modules(repoModule)
+        }
     }
 }

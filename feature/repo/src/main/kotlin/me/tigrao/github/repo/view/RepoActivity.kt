@@ -13,20 +13,17 @@ import me.tigrao.aegis.network.ui.observeOnSuccess
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.helper.bind
 import me.tigrao.github.repo.viewmodel.RepoViewModel
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.kodein
-import org.kodein.di.generic.instance
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RepoActivity : AppCompatActivity(), KodeinAware {
-
-    override val kodein by kodein()
+class RepoActivity : AppCompatActivity() {
 
     private val recyclerView by bind<RecyclerView>(R.id.rv_repo)
     private val loadingView by bind<View>(R.id.loading_repo)
 
     private val viewModel: RepoViewModel by viewModel()
-    private val repoAdapter by instance<RepoAdapter>()
-    private val layoutMangerFactory by instance<LayoutManagerFactory>()
+    private val repoAdapter by inject<RepoAdapter>()
+    private val layoutMangerFactory by inject<LayoutManagerFactory>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,6 +1,5 @@
 package me.tigrao.github.repo
 
-import androidx.lifecycle.ViewModelProvider
 import me.tigrao.aegis.network.NetworkClient
 import me.tigrao.github.repo.api.DataSourceFactory
 import me.tigrao.github.repo.api.RepoApi
@@ -8,43 +7,32 @@ import me.tigrao.github.repo.api.RepoRepository
 import me.tigrao.github.repo.api.RepoRepositoryImpl
 import me.tigrao.github.repo.view.LayoutManagerFactory
 import me.tigrao.github.repo.view.RepoAdapter
-import me.tigrao.github.repo.view.ViewModelFactory
 import me.tigrao.github.repo.viewmodel.RepoViewModel
-import org.kodein.di.Kodein
-import org.kodein.di.android.ActivityRetainedScope
-import org.kodein.di.generic.bind
-import org.kodein.di.generic.instance
-import org.kodein.di.generic.provider
-import org.kodein.di.generic.scoped
-import org.kodein.di.generic.singleton
+import org.koin.dsl.module
 
-val repoModule = Kodein.Module("repoModule") {
+val repoModule = module {
 
-    bind<RepoApi>() with singleton {
+    single {
         NetworkClient.getApi(RepoApi::class.java)
     }
 
-    bind<RepoAdapter>() with scoped(ActivityRetainedScope).singleton {
+    single {
         RepoAdapter()
     }
 
-    bind<ViewModelProvider.Factory>() with singleton {
-        ViewModelFactory(kodein)
+    single {
+        DataSourceFactory(get())
     }
 
-    bind<DataSourceFactory>() with singleton {
-        DataSourceFactory(instance())
+    single<RepoRepository> {
+        RepoRepositoryImpl(get())
     }
 
-    bind<RepoRepository>() with singleton {
-        RepoRepositoryImpl(instance())
+    single {
+        RepoViewModel(get())
     }
 
-    bind<RepoViewModel>() with provider {
-        RepoViewModel(instance())
-    }
-
-    bind<LayoutManagerFactory>() with scoped(ActivityRetainedScope).singleton {
+    single {
         LayoutManagerFactory()
     }
 }

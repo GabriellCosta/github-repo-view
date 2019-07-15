@@ -1,6 +1,28 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
+android {
+
+    // Robolectric resource processing/loading
+    testOptions {
+        unitTests
+                {
+                    includeAndroidResources = true
+                }
+    }
+
+    sourceSets {
+        androidTest {
+            java.srcDirs += "src/sharedTest/kotlin"
+            kotlin.srcDirs += "src/sharedTest/kotlin"
+        }
+        test {
+            java.srcDirs += "src/sharedTest/kotlin"
+            kotlin.srcDirs += "src/sharedTest/kotlin"
+        }
+    }
+}
+
 dependencies {
     implementation project(':network')
     implementation project(':styleguide')
@@ -15,6 +37,19 @@ dependencies {
     implementation dependencies.Dependencies.paging
     implementation dependencies.Dependencies.extensions
 
-    testImplementation dependencies.TestDependencies.jUnit
     testImplementation dependencies.TestDependencies.mockitoKotlin
+
+    testImplementation("org.mockito:mockito-core:2.23.4")
+    testImplementation("androidx.test:runner:1.1.1")
+    testImplementation("androidx.test.ext:junit:1.1.0")
+    testImplementation("androidx.test.espresso:espresso-core:3.1.1")
+    testImplementation("androidx.test.ext:truth:1.1.0")
+    testImplementation("org.robolectric:robolectric:4.1")
+
+    androidTestImplementation("org.mockito:mockito-core:2.23.4")
+    androidTestImplementation("org.mockito:mockito-android:2.23.4")
+    androidTestImplementation("androidx.test:runner:1.1.1")
+    androidTestImplementation("androidx.test.ext:junit:1.1.0")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.1.0")
+    androidTestImplementation("androidx.test.ext:truth:1.1.0")
 }

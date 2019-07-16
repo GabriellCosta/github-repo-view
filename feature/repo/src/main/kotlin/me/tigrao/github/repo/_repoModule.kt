@@ -8,6 +8,7 @@ import me.tigrao.github.repo.api.RepoRepositoryImpl
 import me.tigrao.github.repo.view.LayoutManagerFactory
 import me.tigrao.github.repo.view.RepoAdapter
 import me.tigrao.github.repo.viewmodel.RepoViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val repoModule = module {
@@ -28,7 +29,7 @@ val repoModule = module {
         RepoRepositoryImpl(get())
     }
 
-    single {
+    viewModel {
         RepoViewModel(get())
     }
 

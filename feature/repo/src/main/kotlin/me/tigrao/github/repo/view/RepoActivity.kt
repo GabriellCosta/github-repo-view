@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
+import me.tigrao.aegis.network.ui.ErrorData
 import me.tigrao.aegis.network.ui.observeOnError
 import me.tigrao.aegis.network.ui.observeOnLoading
 import me.tigrao.aegis.network.ui.observeOnSuccess
@@ -38,17 +39,24 @@ class RepoActivity : AppCompatActivity() {
     }
 
     private fun prepareState() {
-        viewModel.uiState.observeOnSuccess(this) { Unit ->
-            Toast.makeText(this, "Deu Bom Mlk : )", Toast.LENGTH_LONG).show()
+        viewModel.uiState.observeOnSuccess(this, :: onSuccess)
+            .observeOnLoading(this, ::onLoading)
+            .observeOnError(this, ::onError)
+    }
 
-            loadingView.visibility = View.GONE
-        }
-            .observeOnLoading(this) {
-                loadingView.visibility = View.VISIBLE
-            }
-            .observeOnError(this) {
-                Toast.makeText(this, "Deu Ruim", Toast.LENGTH_LONG).show()
-            }
+    private fun onSuccess() {
+        Toast.makeText(this, "Deu Bom Mlk : )", Toast.LENGTH_LONG).show()
+
+        loadingView.visibility = View.GONE
+        recyclerView.visibility = View.VISIBLE
+    }
+
+    private fun onLoading() {
+        loadingView.visibility = View.VISIBLE
+    }
+
+    private fun onError(errorData: ErrorData) {
+        Toast.makeText(this, "Deu Ruim", Toast.LENGTH_LONG).show()
     }
 
     private fun prepareList() {

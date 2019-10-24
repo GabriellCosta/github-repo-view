@@ -4,3 +4,7 @@ plugins {
     @Suppress("RemoveRedundantBackticks")
     `kotlin-dsl`
 }
+
+dependencies {
+    implementation(gradleApi())
+}

@@ -41,6 +41,7 @@ fun <RESPONSE> LiveData<UiState<RESPONSE>>.observeOnError(
     return this
 }
 
+@Suppress("TooGenericExceptionCaught")
 suspend inline fun <R> Deferred<R>.uiAwait(
     uiStateLiveData: UiStateLiveData<Unit>,
     action: (R) -> Unit

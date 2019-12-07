@@ -1,13 +1,11 @@
+import dependencies.PluginsVersions
 
 apply plugin: "io.gitlab.arturbosch.detekt"
 
 detekt {
-    version = dependencies.PluginsVersions.detekt
-    profile("main") {
-        input = "$projectDir"
-        config = "$project.rootDir/default-detekt-config.yml"
-        filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
-        output = "${project.buildDir}/reports/detekt.xml"
-        parallel = true
-    }
+    toolVersion = PluginsVersions.detekt
+    input = files("src/main/kotlin")
+    filters = ".*/resources/.*,.*/build/.*"
+    parallel = true
+    config = files("$rootDir/tools/linters/default-detekt-config.yml")
 }

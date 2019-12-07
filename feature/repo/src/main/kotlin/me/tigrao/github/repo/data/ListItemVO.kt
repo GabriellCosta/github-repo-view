@@ -1,6 +1,6 @@
 package me.tigrao.github.repo.data
 
-internal class ListItemVO(
+internal data class ListItemVO(
     val avatar: String,
     val title: String,
     val author: String,

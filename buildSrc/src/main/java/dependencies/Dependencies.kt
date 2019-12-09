@@ -15,11 +15,15 @@ internal object Versions {
     const val kodeinDI = "5.3.0"
     const val timber = "4.7.1"
     const val livedata ="2.0.0"
-    const val constraintLayout= "1.1.2"
+    const val constraintLayout= "1.1.3"
     const val gson = "2.8.5"
     const val imageFetcher = "4.9.0"
-    const val courotines = "1.1.1"
+    const val courotines = "1.3.2"
     const val paging = "2.1.0"
+
+    const val rxKotlin = "2.4.0"
+    const val rxAndroid = "2.1.1"
+    const val rxRetrofitAdapter = "2.6.2"
 
 }
 
@@ -56,7 +60,12 @@ object Dependencies {
     val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.courotines}"
     val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
+    const val rxKotlin = "io.reactivex.rxjava2:rxkotlin:${Versions.rxKotlin}"
+    const val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Versions.rxAndroid}"
+    const val rxRetrofitAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.rxRetrofitAdapter}"
+
     val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+    val rxPaging = "androidx.paging:paging-rxjava2:${Versions.paging}"
 
 }
 

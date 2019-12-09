@@ -6,6 +6,7 @@ import me.tigrao.aegis.network.ui.UiStateLiveDataCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkClient {
@@ -21,6 +22,7 @@ object NetworkClient {
             .addConverterFactory(GsonConverterFactory.create(Gson()))
             .addCallAdapterFactory(UiStateLiveDataCallAdapterFactory())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
 
     private fun buildOkhttpClient() =

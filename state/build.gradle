@@ -1,0 +1,11 @@
+import dependencies.Dependencies
+
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation Dependencies.kotlinStdlib
+    implementation Dependencies.rxKotlin
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

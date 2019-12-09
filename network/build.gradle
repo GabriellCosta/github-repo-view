@@ -27,5 +27,7 @@ dependencies {
     api Dependencies.coroutinesAndroid
     implementation Dependencies.coroutinesAdapter
 
+    implementation Dependencies.rxRetrofitAdapter
+
     testImplementation TestDependencies.jUnit
 }

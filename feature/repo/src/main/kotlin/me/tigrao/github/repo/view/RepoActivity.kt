@@ -7,11 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import me.tigrao.aegis.network.ui.ErrorData
-import me.tigrao.aegis.network.ui.observeOnError
-import me.tigrao.aegis.network.ui.observeOnLoading
-import me.tigrao.aegis.network.ui.observeOnSuccess
+import dev.tigrao.state.*
 import me.tigrao.github.repo.R
+import me.tigrao.github.repo.data.RepoVO
 import me.tigrao.github.repo.helper.bind
 import me.tigrao.github.repo.viewmodel.RepoViewModel
 import org.koin.android.ext.android.inject
@@ -35,18 +33,26 @@ class RepoActivity : AppCompatActivity() {
         prepareState()
 
         viewModel.fetchRepositories()
-            .observe(this, Observer(repoAdapter::submitList))
+
     }
 
     private fun prepareState() {
-        viewModel.uiState.observeOnSuccess(this, :: onSuccess)
-            .observeOnLoading(this, ::onLoading)
-            .observeOnError(this, ::onError)
+        viewModel.viewState.observe(this, Observer {
+            when (it) {
+                StartedEvent -> onLoading()
+                is SuccessEvent -> onSuccess(it)
+                is ErrorEvent -> onError(it.errorDataDTO)
+                FinishedEvent -> onFinish()
+            }
+        })
     }
 
-    private fun onSuccess() {
-        Toast.makeText(this, "Deu Bom Mlk : )", Toast.LENGTH_LONG).show()
+    private fun onSuccess(it: SuccessEvent<RepoVO>) {
+        repoAdapter.submitList(it.result.pagedList)
+    }
 
+
+    private fun onFinish() {
         loadingView.visibility = View.GONE
         recyclerView.visibility = View.VISIBLE
     }
@@ -55,7 +61,7 @@ class RepoActivity : AppCompatActivity() {
         loadingView.visibility = View.VISIBLE
     }
 
-    private fun onError(errorData: ErrorData) {
+    private fun onError(errorData: ErrorDataDTO) {
         Toast.makeText(this, "Deu Ruim", Toast.LENGTH_LONG).show()
     }
 

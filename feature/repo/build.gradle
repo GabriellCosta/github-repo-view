@@ -26,6 +26,7 @@ android {
 dependencies {
     implementation project(':network')
     implementation project(':styleguide')
+    implementation project(':state')
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView
@@ -35,7 +36,11 @@ dependencies {
     implementation dependencies.Dependencies.imageFetcher
 
     implementation dependencies.Dependencies.paging
+    implementation dependencies.Dependencies.rxPaging
     implementation dependencies.Dependencies.extensions
+
+    implementation dependencies.Dependencies.rxKotlin
+    implementation dependencies.Dependencies.rxAndroid
 
     testImplementation dependencies.TestDependencies.mockitoKotlin
 

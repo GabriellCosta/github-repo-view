@@ -1,4 +1,4 @@
-include ':app',
+include ':app', ':state',
         ':network',
         ':styleguide',
         ':commons-test',

@@ -4,3 +4,6 @@ include ':app', ':state',
         ':commons-test',
         ':feature:repo',
         ':feature:pull'
+
+include ':library:router'
+include ':library:router-runner'

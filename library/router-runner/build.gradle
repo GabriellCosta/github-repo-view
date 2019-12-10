@@ -1,0 +1,13 @@
+import dependencies.Dependencies
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+dependencies {
+    implementation project(':library:router')
+
+    implementation Dependencies.kotlinStdlib
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

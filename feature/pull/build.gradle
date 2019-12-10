@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 dependencies {
     implementation project(':network')
     implementation project(':styleguide')
+    implementation project(':library:router')
+    implementation project(':library:router-runner')
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView

@@ -1,6 +1,7 @@
 package me.tigrao.github.repo.api
 
 import androidx.paging.PageKeyedDataSource
+import dev.tigrao.router.Routes
 import dev.tigrao.state.FinishedEvent
 import dev.tigrao.state.StartedEvent
 import dev.tigrao.state.StateEvent
@@ -15,11 +16,10 @@ private const val FIRST_PAGE = 1
 internal class RepoDataSource(
     private val repository: RepoRepository,
     private val state: PublishSubject<StateEvent<RepoVO>>,
-    private val schedulers: Scheduler
+    private val schedulers: Scheduler,
+    private val repoTransformer: RepoTransformer
 ) :
     PageKeyedDataSource<Int, ListItemVO>() {
-
-    private val repoTransformer = RepoTransformer()
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,

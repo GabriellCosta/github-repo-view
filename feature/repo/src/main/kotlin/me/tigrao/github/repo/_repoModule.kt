@@ -12,6 +12,7 @@ import me.tigrao.github.repo.domain.RepoInteractor
 import me.tigrao.github.repo.domain.RepoUseCase
 import me.tigrao.github.repo.view.LayoutManagerFactory
 import me.tigrao.github.repo.view.RepoAdapter
+import me.tigrao.github.repo.viewmodel.RepoTransformer
 import me.tigrao.github.repo.viewmodel.RepoViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -23,11 +24,15 @@ val repoModule = module {
     }
 
     single {
-        RepoAdapter()
+        RepoAdapter(get())
     }
 
     single {
-        DataSourceFactory(get(), Schedulers.io())
+        DataSourceFactory(get(), Schedulers.io(), get())
+    }
+
+    single {
+        RepoTransformer(get())
     }
 
     single<RepoRepository> {

@@ -2,9 +2,12 @@ package me.tigrao.github.repo.api
 
 import androidx.paging.PageKeyedDataSource
 import dev.tigrao.router.Routes
+import dev.tigrao.state.ErrorDataDTO
+import dev.tigrao.state.ErrorEvent
 import dev.tigrao.state.FinishedEvent
 import dev.tigrao.state.StartedEvent
 import dev.tigrao.state.StateEvent
+import io.reactivex.Observable
 import io.reactivex.Scheduler
 import io.reactivex.subjects.PublishSubject
 import me.tigrao.github.repo.data.ListItemVO
@@ -49,12 +52,17 @@ internal class RepoDataSource(
             .map {
                 repoTransformer.map(it)
             }
+            .doOnError {
+                state.onNext(ErrorEvent(ErrorDataDTO(it)))
+                state.onNext(FinishedEvent)
+            }
             .doOnSubscribe {
                 state.onNext(StartedEvent)
             }
             .doOnComplete {
                 state.onNext(FinishedEvent)
             }
+            .onErrorResumeNext(Observable.empty())
 
     override fun loadBefore(
         params: LoadParams<Int>,

@@ -1,13 +1,10 @@
 object AndroidConfig {
 
-    val applicationId = "me.tigrao.aegis"
+    const val applicationId = "dev.tigrao.github"
 
-    val compileSdk = 28
-    val minSdk = 21
-    val targetSdk = compileSdk
+    const val compileSdk = 31
+    const val minSdk = 21
+    const val targetSdk = compileSdk
 
-    val buildToolsVersion = "28.0.3"
-
-    val instrumentationTestRunner = "android.support.test.runner.AndroidJUnitRunner"
-
+    const val instrumentationTestRunner = "androidx.test.runner.AndroidJUnitRunner"
 }

@@ -15,7 +15,7 @@ internal object Versions {
     const val kodeinDI = "5.3.0"
     const val timber = "4.7.1"
     const val livedata ="2.0.0"
-    const val constraintLayout= "1.1.2"
+    const val constraintLayout= "2.1.2"
     const val gson = "2.8.5"
     const val imageFetcher = "4.9.0"
     const val courotines = "1.1.1"

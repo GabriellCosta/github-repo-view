@@ -9,11 +9,11 @@ internal class RepoTransformer : UiTransformer<RepositoriesResponseDTO, List<Lis
     override fun map(parameter: RepositoriesResponseDTO): List<ListItemVO> {
         return parameter.items.map { map ->
             ListItemVO(
-                map.owner.avatarUrl,
+                map.owner.avatar_url,
                 map.name,
                 map.owner.login,
-                map.stargazersCount,
-                map.forksCount,
+                map.stargazers_count,
+                map.forks_count,
                 map.description ?: ""
             )
         }

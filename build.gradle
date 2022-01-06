@@ -70,9 +70,7 @@ subprojects {
 
         dependencies {
 
-            implementation "org.koin:koin-androidx-scope:2.0.1"
-            implementation "org.koin:koin-androidx-viewmodel:2.0.1"
-            implementation "org.koin:koin-androidx-ext:2.0.1"
+            implementation dependencies.Dependencies.Koin.android
 
             testImplementation project(':commons-test')
             androidTestImplementation project(':commons-test')

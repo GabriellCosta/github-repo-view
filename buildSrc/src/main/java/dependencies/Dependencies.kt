@@ -79,6 +79,15 @@ object Dependencies {
         }
     }
 
+    object Koin {
+        private const val VERSION = "3.1.4"
+
+        const val core = "io.insert-koin:koin-core:$VERSION"
+        const val android = "io.insert-koin:koin-android:$VERSION"
+
+        const val koinTest = "io.insert-koin:koin-test-junit4:$VERSION"
+    }
+
 }
 
 object TestDependencies {

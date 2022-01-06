@@ -5,6 +5,7 @@ import me.tigrao.github.repo.api.DataSourceFactory
 import me.tigrao.github.repo.api.RepoApi
 import me.tigrao.github.repo.api.RepoRepository
 import me.tigrao.github.repo.api.RepoRepositoryImpl
+import me.tigrao.github.repo.data.OwnerDTOJsonAdapter
 import me.tigrao.github.repo.view.LayoutManagerFactory
 import me.tigrao.github.repo.view.RepoAdapter
 import me.tigrao.github.repo.viewmodel.RepoViewModel

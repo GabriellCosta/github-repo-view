@@ -1,12 +1,10 @@
 package me.tigrao.github.repo.data
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 internal class RepositoriesResponseDTO(
-    @SerializedName("total_count")
-    val totalRepositories: Int,
-    @SerializedName("incomplete_results")
-    val incompleteResults: Boolean,
-    @SerializedName("items")
-    val items: List<RepositoryDTO>
+    val total_count: Int,
+    val incomplete_results: Boolean,
+    val items: List<RepositoryDTO>,
 )

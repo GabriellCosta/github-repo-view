@@ -1,5 +1,5 @@
 plugins {
-    id "com.android.library"
+    id "kotlin"
 }
 
 dependencies {
@@ -12,4 +12,5 @@ dependencies {
     implementation dependencies.Dependencies.okhttp
     implementation dependencies.Dependencies.okhttpLogger
 
+    implementation dependencies.Dependencies.Koin.core
 }

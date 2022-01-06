@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="me.tigrao.aegis">
+  package="me.tigrao.github">
 
   <application
     android:name="me.tigrao.github.CustomApplication"

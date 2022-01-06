@@ -1,10 +1,9 @@
 package me.tigrao.github.repo.data
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.JsonClass
 
+@JsonClass(generateAdapter = true)
 internal class OwnerDTO(
-    @SerializedName("avatar_url")
-    val avatarUrl: String,
-    @SerializedName("login")
+    val avatar_url: String,
     val login: String
 )

@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
 
 android {
 
@@ -31,7 +32,7 @@ dependencies {
     implementation dependencies.Dependencies.recyclerView
     implementation dependencies.Dependencies.cardView
     implementation dependencies.Dependencies.appCompat
-    implementation dependencies.Dependencies.gson
+    dependencies.Dependencies.Moshi.addLibs(project)
     implementation dependencies.Dependencies.imageFetcher
 
     implementation dependencies.Dependencies.paging

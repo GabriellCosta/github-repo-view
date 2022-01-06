@@ -1,5 +1,8 @@
 package dependencies
 
+import org.gradle.api.Project
+import org.gradle.kotlin.dsl.closureOf
+
 internal object Versions {
 
     const val okhttp = "3.11.0"
@@ -57,6 +60,24 @@ object Dependencies {
     val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
 
     val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+
+    object Moshi {
+        object Versions {
+            const val moshi = "1.12.0"
+        }
+
+        const val core = "com.squareup.moshi:moshi:${Versions.moshi}"
+        const val retrofit = "com.squareup.retrofit2:converter-moshi:2.9.0"
+        const val coreKotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
+        const val codeGen = "com.squareup.moshi:moshi-kotlin-codegen:${Versions.moshi}"
+
+        val addLibs = closureOf<Project> {
+            with(project.dependencies) {
+                add("implementation", core)
+                add("kapt", codeGen)
+            }
+        }
+    }
 
 }
 

@@ -1,6 +1,0 @@
-include ':app',
-        ':network',
-        ':styleguide',
-        ':commons-test',
-        ':feature:repo',
-        ':feature:pull'

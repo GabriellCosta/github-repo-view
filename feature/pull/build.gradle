@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 dependencies {
-    implementation project(':network')
-    implementation project(':styleguide')
+    implementation(projects.network)
+    implementation(projects.styleguide)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView

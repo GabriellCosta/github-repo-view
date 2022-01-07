@@ -7,21 +7,24 @@ internal object Versions {
 
     const val okhttp = "4.9.3"
     const val retrofit = "2.9.0"
-    const val supportLibrary = "1.0.0"
-    const val jUnit4 = "4.12"
+    const val supportLibrary = "1.4.0"
+    const val material = "1.4.0"
+    const val recyclerView = "1.2.1"
+    const val jUnit4 = "4.13.2"
     const val assertJ = "2.9.1"
+    const val androidJUnit = "1.2.0"
+    const val espressoCore = "3.4.0"
+    const val espressoRules = "1.4.0"
+    const val roboletric = "4.7.3"
+    const val timber = "5.0.1"
+    const val livedata = "2.4.0"
+    const val constraintLayout = "2.1.2"
+    const val gson = "2.8.9"
+    const val imageFetcher = "4.12.0"
+    const val paging = "3.1.0"
+
     const val mockitoKotlin = "2.0.0-RC3"
     const val mockitoDexMaker = "2.19.0"
-    const val androidJUnit = "1.0.2"
-    const val espressoCore = "3.0.2"
-    const val roboletric = "4.0"
-    const val kodeinDI = "5.3.0"
-    const val timber = "4.7.1"
-    const val livedata ="2.0.0"
-    const val constraintLayout= "2.1.2"
-    const val gson = "2.8.5"
-    const val imageFetcher = "4.9.0"
-    const val paging = "3.1.0"
 
 }
 
@@ -34,13 +37,8 @@ object Dependencies {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 
     val appCompat = "androidx.appcompat:appcompat:${Versions.supportLibrary}"
-    val cardView = "androidx.cardview:cardview:${Versions.supportLibrary}"
-    val recyclerView = "androidx.recyclerview:recyclerview:${Versions.supportLibrary}"
-    val materialDesign = "com.google.android.material:material:${Versions.supportLibrary}"
-
-    val kodein = "org.kodein.di:kodein-di-generic-jvm:${Versions.kodeinDI}"
-    val kodeinConf = "org.kodein.di:kodein-di-conf-jvm:${Versions.kodeinDI}"
-    val kodeinAndroid = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodeinDI}"
+    val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
+    val materialDesign = "com.google.android.material:material:${Versions.material}"
 
     val timber = "com.jakewharton.timber:timber:${Versions.timber}"
 

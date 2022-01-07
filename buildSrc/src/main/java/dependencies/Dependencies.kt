@@ -5,8 +5,8 @@ import org.gradle.kotlin.dsl.closureOf
 
 internal object Versions {
 
-    const val okhttp = "3.11.0"
-    const val retrofit = "2.4.0"
+    const val okhttp = "4.9.3"
+    const val retrofit = "2.9.0"
     const val supportLibrary = "1.0.0"
     const val jUnit4 = "4.12"
     const val assertJ = "2.9.1"
@@ -21,8 +21,7 @@ internal object Versions {
     const val constraintLayout= "2.1.2"
     const val gson = "2.8.5"
     const val imageFetcher = "4.9.0"
-    const val courotines = "1.1.1"
-    const val paging = "2.1.0"
+    const val paging = "3.1.0"
 
 }
 
@@ -33,8 +32,6 @@ object Dependencies {
     val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
     val okhttpLogger = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
-    val gson = "com.google.code.gson:gson:${Versions.gson}"
 
     val appCompat = "androidx.appcompat:appcompat:${Versions.supportLibrary}"
     val cardView = "androidx.cardview:cardview:${Versions.supportLibrary}"
@@ -55,11 +52,7 @@ object Dependencies {
 
     val imageFetcher = "com.github.bumptech.glide:glide:${Versions.imageFetcher}"
 
-    val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.courotines}"
-    val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.courotines}"
-    val coroutinesAdapter = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
-
-    val paging = "androidx.paging:paging-runtime:${Versions.paging}"
+    val paging = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
     object Moshi {
         object Versions {
@@ -88,6 +81,16 @@ object Dependencies {
         const val koinTest = "io.insert-koin:koin-test-junit4:$VERSION"
     }
 
+    object Coroutines {
+        object Versions {
+            const val coroutines = "1.5.2"
+        }
+
+        const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+        const val android =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+        const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+    }
 }
 
 object TestDependencies {

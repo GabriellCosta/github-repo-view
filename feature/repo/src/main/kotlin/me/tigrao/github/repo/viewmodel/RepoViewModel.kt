@@ -1,28 +1,20 @@
 package me.tigrao.github.repo.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
-import me.tigrao.github.repo.api.DataSourceFactory
-import me.tigrao.github.repo.data.ListItemVO
+import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
+import me.tigrao.github.repo.api.RepoDataSource
 
-private const val PAGE_SIZE = 3
+internal class RepoViewModel(
+    repoDataSource: RepoDataSource,
+) : ViewModel() {
 
-internal class RepoViewModel(factory: DataSourceFactory) : ViewModel() {
-
-    val uiState = factory.dataSourceLiveData
-    private val pagedLiveData: LiveData<PagedList<ListItemVO>>
-
-    init {
-        val config = PagedList.Config.Builder()
-            .setPageSize(PAGE_SIZE)
-            .setEnablePlaceholders(true)
-            .build()
-        pagedLiveData = LivePagedListBuilder(factory, config).build()
-    }
-
-    fun fetchRepositories(): LiveData<PagedList<ListItemVO>> {
-        return pagedLiveData
-    }
+    val reposPager = Pager(
+        PagingConfig(pageSize = 20),
+    ) {
+        repoDataSource
+    }.flow
+        .cachedIn(viewModelScope)
 }

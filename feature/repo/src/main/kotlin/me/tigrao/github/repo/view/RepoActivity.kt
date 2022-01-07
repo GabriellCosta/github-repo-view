@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
-import me.tigrao.aegis.network.ui.ErrorData
-import me.tigrao.aegis.network.ui.observeOnError
-import me.tigrao.aegis.network.ui.observeOnLoading
-import me.tigrao.aegis.network.ui.observeOnSuccess
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.helper.bind
 import me.tigrao.github.repo.viewmodel.RepoViewModel
@@ -32,16 +31,22 @@ class RepoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_repo)
 
         prepareList()
-        prepareState()
 
-        viewModel.fetchRepositories()
-            .observe(this, Observer(repoAdapter::submitList))
-    }
+        lifecycleScope.launch {
+            repoAdapter.loadStateFlow.collectLatest { loadStates ->
+                when (loadStates.refresh) {
+                    is LoadState.Loading -> onLoading()
+                    is LoadState.NotLoading -> onSuccess()
+                    is LoadState.Error -> onError()
+                }
+            }
+        }
 
-    private fun prepareState() {
-        viewModel.uiState.observeOnSuccess(this, :: onSuccess)
-            .observeOnLoading(this, ::onLoading)
-            .observeOnError(this, ::onError)
+        lifecycleScope.launch {
+            viewModel.reposPager.collectLatest { pagingData ->
+                repoAdapter.submitData(pagingData)
+            }
+        }
     }
 
     private fun onSuccess() {
@@ -55,7 +60,7 @@ class RepoActivity : AppCompatActivity() {
         loadingView.visibility = View.VISIBLE
     }
 
-    private fun onError(errorData: ErrorData) {
+    private fun onError() {
         Toast.makeText(this, "Deu Ruim", Toast.LENGTH_LONG).show()
     }
 

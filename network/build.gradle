@@ -4,18 +4,11 @@ import dependencies.TestDependencies
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
-android {
-    defaultConfig {
-        buildConfigField "String", "API_URL", "\"https://api.github.com/\""
-    }
-}
-
 dependencies {
 
     implementation Dependencies.kotlinStdlib
 
     api Dependencies.retrofit
-    implementation Dependencies.retrofitGsonConverter
     implementation Dependencies.okhttp
     implementation Dependencies.okhttpLogger
 
@@ -23,9 +16,8 @@ dependencies {
 
     implementation Dependencies.lifecycle
 
-    api Dependencies.coroutinesCore
-    api Dependencies.coroutinesAndroid
-    implementation Dependencies.coroutinesAdapter
+    api Dependencies.Coroutines.core
+    api Dependencies.Coroutines.android
 
     testImplementation TestDependencies.jUnit
 }

@@ -10,7 +10,6 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import me.tigrao.aegis.network.ui.UiStateLiveData
 import me.tigrao.aegis.network.ui.UiSuccess
 import me.tigrao.commons.test.applyTestTheme
 import me.tigrao.github.repo.R

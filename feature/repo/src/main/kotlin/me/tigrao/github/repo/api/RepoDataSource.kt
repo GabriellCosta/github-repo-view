@@ -1,59 +1,39 @@
 package me.tigrao.github.repo.api
 
-import androidx.paging.PageKeyedDataSource
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import me.tigrao.aegis.network.ui.UiStateLiveData
-import me.tigrao.aegis.network.ui.uiAwait
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.viewmodel.RepoTransformer
 
-private const val FIRST_PAGE = 1
-
 internal class RepoDataSource(
     private val repository: RepoRepository,
-    private val listState: UiStateLiveData<Unit>
-) :
-    PageKeyedDataSource<Int, ListItemVO>() {
-
-    private val coroutineScope = CoroutineScope(Dispatchers.IO)
+) : PagingSource<Int, ListItemVO>() {
 
     private val repoTransformer = RepoTransformer()
 
-    override fun loadInitial(
-        params: LoadInitialParams<Int>,
-        callback: LoadInitialCallback<Int, ListItemVO>
-    ) {
-
-        coroutineScope.launch {
-            repository.fetchRepositories(FIRST_PAGE).uiAwait(listState) {
-                val mapped = repoTransformer.map(it)
-
-                callback.onResult(mapped, 0, nextPageCalculate(FIRST_PAGE))
-            }
+    override fun getRefreshKey(state: PagingState<Int, ListItemVO>): Int? {
+        return state.anchorPosition?.let { anchorPosition ->
+            val anchorPage = state.closestPageToPosition(anchorPosition)
+            anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override fun loadAfter(
-        params: LoadParams<Int>,
-        callback: LoadCallback<Int, ListItemVO>
-    ) {
-        coroutineScope.launch {
-            repository.fetchRepositories(params.key).uiAwait(listState) {
-                val mapped = repoTransformer.map(it)
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ListItemVO> {
+        return try {
+            // Start refresh at page 1 if undefined.
+            val nextPageNumber = params.key ?: 1
+            val response = repository.fetchRepositories(nextPageNumber)
+            val mapped = repoTransformer.map(response)
 
-                callback.onResult(mapped, nextPageCalculate(params.key))
-            }
+
+            LoadResult.Page(
+                data = mapped,
+                prevKey = null, // Only paging forward.
+                nextKey = nextPageNumber + 1
+            )
+        } catch (e: Exception) {
+            e.printStackTrace()
+            LoadResult.Error(IllegalStateException("api error"))
         }
     }
-
-    override fun loadBefore(
-        params: LoadParams<Int>,
-        callback: LoadCallback<Int, ListItemVO>
-    ) {
-        //Not Implementable
-    }
-
-    private fun nextPageCalculate(currentPage: Int) = currentPage + 1
 }

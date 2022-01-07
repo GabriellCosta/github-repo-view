@@ -25,7 +25,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.network)
     implementation(projects.styleguide)
 
     implementation dependencies.Dependencies.constraintLayout

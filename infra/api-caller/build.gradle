@@ -10,4 +10,6 @@ dependencies {
 
     implementation dependencies.Dependencies.Coroutines.core
 
+    testImplementation(dependencies.TestDependencies.jUnit)
+    testImplementation(dependencies.TestDependencies.mockk)
 }

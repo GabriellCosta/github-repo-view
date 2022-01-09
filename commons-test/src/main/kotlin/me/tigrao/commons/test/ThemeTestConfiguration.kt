@@ -5,5 +5,5 @@ import androidx.test.core.app.ApplicationProvider
 
 fun applyTestTheme() {
     ApplicationProvider.getApplicationContext<Application>()
-        .setTheme(R.style.AppTheme)
+        .setTheme(R.style.Theme_MyApp)
 }

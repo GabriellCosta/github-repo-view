@@ -101,6 +101,10 @@ object Dependencies {
 
 object TestDependencies {
 
+    const val mockkVersion = "1.12.1"
+
+    const val mockk = "io.mockk:mockk:$mockkVersion"
+    const val mockkAndroid = "io.mockk:mockk-android:$mockkVersion"
     val jUnit = "junit:junit:${Versions.jUnit4}"
     val kotlinReflect = "org.jetbrains.kotlin:kotlin-reflect:${PluginsVersions.kotlin}"
     val assertJ = "org.assertj:assertj-core:${Versions.assertJ}"

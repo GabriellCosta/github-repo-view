@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.data.api
+package me.tigrao.github.repo.data
 
 import me.tigrao.github.repo.data.api.model.RepositoriesResponse
 

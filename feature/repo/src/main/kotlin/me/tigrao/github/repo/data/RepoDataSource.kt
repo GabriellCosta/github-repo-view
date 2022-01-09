@@ -1,8 +1,7 @@
-package me.tigrao.github.repo.data.api
+package me.tigrao.github.repo.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.viewmodel.RepoTransformer
 
 internal class RepoDataSource(

@@ -4,6 +4,8 @@ import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import me.tigrao.github.repo.data.RepoRepository
+import me.tigrao.github.repo.data.RepoRepositoryImpl
 import org.junit.Test
 
 @Suppress("DeferredResultUnused")

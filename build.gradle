@@ -35,7 +35,6 @@ subprojects {
 
     apply from: "$rootDir/tools/ktlint.gradle"
     apply from: "$rootDir/tools/detekt.gradle"
-    apply plugin: 'kotlin-android-extensions'
 
     afterEvaluate {
         if (!project.hasProperty("android")) return
@@ -54,10 +53,6 @@ subprojects {
             compileOptions {
                 sourceCompatibility 1.8
                 targetCompatibility 1.8
-            }
-
-            androidExtensions {
-                experimental = true
             }
 
             sourceSets {

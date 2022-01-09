@@ -89,6 +89,13 @@ object Dependencies {
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
         const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     }
+
+    object Kirich {
+        private const val VERSION = "1.5.3"
+
+        const val viewBindingProperty =
+            "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$VERSION"
+    }
 }
 
 object TestDependencies {

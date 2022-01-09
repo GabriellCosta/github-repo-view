@@ -14,6 +14,10 @@ android {
                 }
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
+
     sourceSets {
         androidTest {
             java.srcDirs += "src/sharedTest/kotlin"
@@ -38,6 +42,7 @@ dependencies {
     implementation dependencies.Dependencies.retrofit
 
     implementation dependencies.Dependencies.paging
+    implementation dependencies.Dependencies.Kirich.viewBindingProperty
 
     testImplementation dependencies.TestDependencies.mockitoKotlin
 

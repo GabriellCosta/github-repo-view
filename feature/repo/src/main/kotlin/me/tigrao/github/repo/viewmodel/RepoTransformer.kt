@@ -8,11 +8,11 @@ internal class RepoTransformer {
     fun map(parameter: RepositoriesResponseDTO): List<ListItemVO> {
         return parameter.items.map { map ->
             ListItemVO(
-                map.owner.avatar_url,
+                map.owner.avatar,
                 map.name,
                 map.owner.login,
-                map.stargazers_count,
-                map.forks_count,
+                map.stars,
+                map.forks,
                 map.description.orEmpty()
             )
         }

@@ -1,0 +1,13 @@
+plugins {
+    id "kotlin"
+}
+
+dependencies {
+    implementation dependencies.Dependencies.kotlinStdlib
+
+    implementation dependencies.Dependencies.okhttp
+    implementation dependencies.Dependencies.retrofit
+
+    implementation dependencies.Dependencies.Coroutines.core
+
+}

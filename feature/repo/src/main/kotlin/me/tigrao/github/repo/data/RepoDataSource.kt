@@ -2,38 +2,44 @@ package me.tigrao.github.repo.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import me.tigrao.github.repo.presentation.RepoTransformer
-import me.tigrao.github.repo.presentation.model.ListItemUiModel
+import me.tigrao.github.repo.domain.FetchRepositoryParameters
+import me.tigrao.github.repo.domain.FetchRepositoryUseCase
+import me.tigrao.github.repo.domain.model.RepositoryDataModel
 
 internal class RepoDataSource(
-    private val repository: RepoRepository,
-) : PagingSource<Int, ListItemUiModel>() {
+    private val fetchRepositoryUseCase: FetchRepositoryUseCase,
+    private val repositoryErrorModelToUiMapper: RepositoryErrorModelToUiMapper,
+) : PagingSource<Int, RepositoryDataModel>() {
 
-    private val repoTransformer = RepoTransformer()
-
-    override fun getRefreshKey(state: PagingState<Int, ListItemUiModel>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, RepositoryDataModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ListItemUiModel> {
-        return try {
-            // Start refresh at page 1 if undefined.
-            val nextPageNumber = params.key ?: 1
-            val response = repository.fetchRepositories(nextPageNumber)
-            val mapped = repoTransformer.map(response)
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, RepositoryDataModel> {
+        val nextPageNumber = params.key ?: 1
 
+        val parameters = FetchRepositoryParameters(
+            language = "kotlin",
+            sort = "",
+            page = nextPageNumber,
+        )
 
-            LoadResult.Page(
-                data = mapped,
-                prevKey = null, // Only paging forward.
-                nextKey = nextPageNumber + 1
-            )
-        } catch (e: Exception) {
-            e.printStackTrace()
-            LoadResult.Error(IllegalStateException("api error"))
-        }
+        return fetchRepositoryUseCase(parameters).map(
+            success = {
+                LoadResult.Page(
+                    data = it.data,
+                    prevKey = null, // Only paging forward.
+                    nextKey = nextPageNumber + 1
+                )
+            },
+            error = {
+                val message = repositoryErrorModelToUiMapper.mapFrom(it)
+
+                LoadResult.Error(IllegalStateException(message))
+            }
+        )
     }
 }

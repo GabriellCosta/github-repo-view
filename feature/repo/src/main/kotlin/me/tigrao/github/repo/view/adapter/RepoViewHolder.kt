@@ -8,6 +8,7 @@ import com.bumptech.glide.request.RequestOptions
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.presentation.model.ListItemUiModel
 import me.tigrao.github.repo.databinding.ItemListRepoBinding
+import me.tigrao.github.repo.domain.model.RepositoryDataModel
 
 internal class RepoViewHolder(private val binding: ItemListRepoBinding) :
     RecyclerView.ViewHolder(binding.root) {
@@ -21,7 +22,7 @@ internal class RepoViewHolder(private val binding: ItemListRepoBinding) :
         }
     }
 
-    fun bind(item: ListItemUiModel) {
+    fun bind(item: RepositoryDataModel) {
         binding.title.text = item.title
         binding.description.text = item.description
         binding.stars.text = item.stars.toString()

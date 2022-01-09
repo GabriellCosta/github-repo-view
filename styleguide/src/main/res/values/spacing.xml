@@ -9,4 +9,6 @@
     <dimen name="spacing_XL">48dp</dimen>
     <dimen name="spacing_XXL">56dp</dimen>
     <dimen name="spacing_XXXL">64dp</dimen>
+
+    <dimen name="loadingSize"></dimen>
 </resources>

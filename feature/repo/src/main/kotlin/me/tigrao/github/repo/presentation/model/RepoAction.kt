@@ -1,5 +1,7 @@
 package me.tigrao.github.repo.presentation.model
 
-internal sealed interface RepoAction {
+import br.com.tabarato.infra.action.dispatcher.ViewAction
+
+internal sealed interface RepoAction: ViewAction {
     
 }

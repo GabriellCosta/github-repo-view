@@ -37,6 +37,7 @@ object Dependencies {
     val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
 
     val appCompat = "androidx.appcompat:appcompat:${Versions.supportLibrary}"
+    const val coreKTX = "androidx.core:core-ktx:1.7.0"
     val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
     val materialDesign = "com.google.android.material:material:${Versions.material}"
 

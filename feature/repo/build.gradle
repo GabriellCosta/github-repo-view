@@ -17,21 +17,11 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
-    sourceSets {
-        androidTest {
-            java.srcDirs += "src/sharedTest/kotlin"
-            kotlin.srcDirs += "src/sharedTest/kotlin"
-        }
-        test {
-            java.srcDirs += "src/sharedTest/kotlin"
-            kotlin.srcDirs += "src/sharedTest/kotlin"
-        }
-    }
 }
 
 dependencies {
     implementation(projects.styleguide)
+    implementation(projects.designSystem.viewState)
 
     implementation dependencies.Dependencies.constraintLayout
     implementation dependencies.Dependencies.recyclerView

@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.api
+package me.tigrao.github.repo.data.api
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState

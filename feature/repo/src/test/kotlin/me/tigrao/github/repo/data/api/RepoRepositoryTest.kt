@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.api
+package me.tigrao.github.repo.data.api
 
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.eq

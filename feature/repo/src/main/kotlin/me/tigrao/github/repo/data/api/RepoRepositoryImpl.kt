@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.api
+package me.tigrao.github.repo.data.api
 
 internal class RepoRepositoryImpl(private val api: RepoApi) : RepoRepository {
 

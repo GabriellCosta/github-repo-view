@@ -2,10 +2,10 @@ package me.tigrao.github.repo.view.adapter
 
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import me.tigrao.github.repo.data.ListItemVO
+import me.tigrao.github.repo.presentation.model.ListItemUiModel
 
 internal class RepoAdapter :
-    PagingDataAdapter<ListItemVO, RepoViewHolder>(RepoDiffConfig()) {
+    PagingDataAdapter<ListItemUiModel, RepoViewHolder>(RepoDiffConfig()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
         return RepoViewHolder(parent)

@@ -13,7 +13,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import me.tigrao.aegis.network.ui.UiSuccess
 import me.tigrao.commons.test.applyTestTheme
 import me.tigrao.github.repo.R
-import me.tigrao.github.repo.data.ListItemVO
+import me.tigrao.github.repo.presentation.model.ListItemUiModel
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
 import me.tigrao.github.repo.presentation.RepoViewModel
@@ -65,7 +65,7 @@ class RepoActivityTest {
     @Test
     fun givenSuccessResponse_ShouldDisplayRecyclerView() {
         val uiStateMock = UiStateLiveData<Unit>()
-        val pagedListMock = MutableLiveData<PagedList<ListItemVO>>()
+        val pagedListMock = MutableLiveData<PagedList<ListItemUiModel>>()
         whenever(viewModel.uiState).thenReturn(uiStateMock)
         whenever(viewModel.fetchRepositories()).thenReturn(pagedListMock)
 

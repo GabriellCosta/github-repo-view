@@ -3,21 +3,22 @@ package me.tigrao.github.repo.data
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import me.tigrao.github.repo.presentation.RepoTransformer
+import me.tigrao.github.repo.presentation.model.ListItemUiModel
 
 internal class RepoDataSource(
     private val repository: RepoRepository,
-) : PagingSource<Int, ListItemVO>() {
+) : PagingSource<Int, ListItemUiModel>() {
 
     private val repoTransformer = RepoTransformer()
 
-    override fun getRefreshKey(state: PagingState<Int, ListItemVO>): Int? {
+    override fun getRefreshKey(state: PagingState<Int, ListItemUiModel>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             val anchorPage = state.closestPageToPosition(anchorPosition)
             anchorPage?.prevKey?.plus(1) ?: anchorPage?.nextKey?.minus(1)
         }
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ListItemVO> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ListItemUiModel> {
         return try {
             // Start refresh at page 1 if undefined.
             val nextPageNumber = params.key ?: 1

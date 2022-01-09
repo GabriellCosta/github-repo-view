@@ -6,14 +6,6 @@ plugins {
 
 android {
 
-    // Robolectric resource processing/loading
-    testOptions {
-        unitTests
-                {
-                    includeAndroidResources = true
-                }
-    }
-
     buildFeatures {
         viewBinding = true
     }

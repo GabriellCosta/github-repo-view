@@ -14,6 +14,8 @@ import me.tigrao.aegis.network.ui.UiSuccess
 import me.tigrao.commons.test.applyTestTheme
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
+import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
+import me.tigrao.github.repo.view.adapter.RepoAdapter
 import me.tigrao.github.repo.viewmodel.RepoViewModel
 import org.hamcrest.CoreMatchers.not
 import org.junit.After

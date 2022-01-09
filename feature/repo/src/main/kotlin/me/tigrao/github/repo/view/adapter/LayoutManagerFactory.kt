@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.view
+package me.tigrao.github.repo.view.adapter
 
 import android.content.Context
 import android.view.Surface

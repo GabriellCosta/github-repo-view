@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.view
+package me.tigrao.github.repo.view.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import me.tigrao.github.repo.data.ListItemVO

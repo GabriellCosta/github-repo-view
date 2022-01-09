@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.view
+package me.tigrao.github.repo.view.adapter
 
 import android.graphics.Rect
 import android.view.View

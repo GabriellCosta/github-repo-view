@@ -1,8 +1,6 @@
 package me.tigrao.github.repo
 
 import me.tigrao.github.repo.data.RepoDataSource
-import me.tigrao.github.repo.data.RepoRepository
-import me.tigrao.github.repo.data.RepoRepositoryImpl
 import me.tigrao.github.repo.data.RepositoryErrorModelToUiMapper
 import me.tigrao.github.repo.data.api.RepoApi
 import me.tigrao.github.repo.domain.FetchRepositoryErrorMapper
@@ -33,10 +31,6 @@ val repoModule = module {
 
     factory {
         RepositoryErrorModelToUiMapper(androidContext().resources)
-    }
-
-    single<RepoRepository> {
-        RepoRepositoryImpl(get())
     }
 
     viewModel {

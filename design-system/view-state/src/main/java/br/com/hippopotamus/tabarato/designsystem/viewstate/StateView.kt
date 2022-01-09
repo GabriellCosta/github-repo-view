@@ -43,7 +43,7 @@ class StateView @JvmOverloads constructor(
     private fun applyButton(button: ButtonViewArg?, view: Button) {
         button?.let {
             view.text = it.text
-            view.setOnClickListener { _ ->
+            view.setOnClickListener {
                 stateViewDispatchAction?.dispatch(button.action)
             }
         }

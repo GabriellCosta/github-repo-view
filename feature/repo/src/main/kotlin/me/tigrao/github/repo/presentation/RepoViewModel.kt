@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.viewmodel
+package me.tigrao.github.repo.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

@@ -1,4 +1,4 @@
-package me.tigrao.github.repo.viewmodel
+package me.tigrao.github.repo.presentation
 
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.data.api.model.RepositoriesResponse

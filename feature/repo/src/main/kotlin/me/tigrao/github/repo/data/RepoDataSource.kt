@@ -2,7 +2,7 @@ package me.tigrao.github.repo.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import me.tigrao.github.repo.viewmodel.RepoTransformer
+import me.tigrao.github.repo.presentation.RepoTransformer
 
 internal class RepoDataSource(
     private val repository: RepoRepository,

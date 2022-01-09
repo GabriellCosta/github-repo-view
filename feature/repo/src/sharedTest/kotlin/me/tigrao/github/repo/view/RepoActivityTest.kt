@@ -16,7 +16,7 @@ import me.tigrao.github.repo.R
 import me.tigrao.github.repo.data.ListItemVO
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
-import me.tigrao.github.repo.viewmodel.RepoViewModel
+import me.tigrao.github.repo.presentation.RepoViewModel
 import org.hamcrest.CoreMatchers.not
 import org.junit.After
 import org.junit.Before

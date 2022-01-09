@@ -6,7 +6,7 @@ import me.tigrao.github.repo.data.RepoRepository
 import me.tigrao.github.repo.data.RepoRepositoryImpl
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
-import me.tigrao.github.repo.viewmodel.RepoViewModel
+import me.tigrao.github.repo.presentation.RepoViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit

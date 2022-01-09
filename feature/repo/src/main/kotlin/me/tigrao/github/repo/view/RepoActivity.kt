@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import me.tigrao.github.repo.databinding.ActivityRepoBinding
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
-import me.tigrao.github.repo.viewmodel.RepoViewModel
+import me.tigrao.github.repo.presentation.RepoViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

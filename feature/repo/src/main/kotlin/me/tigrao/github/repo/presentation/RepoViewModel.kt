@@ -37,14 +37,30 @@ internal class RepoViewModel(
 
     private fun onCollectStates(action: RepoAction.CollectState) {
         with(action.state) {
-            if (append is LoadState.NotLoading
-                && append.endOfPaginationReached
-                && action.itemCount < 1
-            ) {
-                _state.postValue(
-                    RepoSate.EmptyState(stateViewFactory.emptyState())
-                )
+            when (this.refresh) {
+                is LoadState.Error -> {
+                    val state = if (contentIsEmpty(action.itemCount)) {
+                        RepoSate.EmptyState(stateViewFactory.genericError())
+                    } else {
+                        RepoSate.SuccessState
+                    }
+
+                    _state.postValue(state)
+                }
+                is LoadState.NotLoading -> {
+                    val state =
+                        if (append.endOfPaginationReached && contentIsEmpty(action.itemCount)) {
+                            RepoSate.EmptyState(stateViewFactory.emptyState())
+                        } else {
+                            RepoSate.SuccessState
+                        }
+
+                    _state.postValue(state)
+                }
+                LoadState.Loading -> {}
             }
         }
     }
+
+    private fun contentIsEmpty(itemCount: Int) = itemCount < 1
 }

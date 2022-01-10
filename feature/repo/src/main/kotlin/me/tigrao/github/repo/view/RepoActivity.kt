@@ -70,6 +70,7 @@ class RepoActivity : AppCompatActivity(), StateViewActionDispatcher {
 
     private fun readState(state: RepoSate) = when (state) {
         is RepoSate.EmptyState -> onEmptyState(state)
+        RepoSate.SuccessState -> onSuccessState()
     }
 
     private fun readEvent(event: RepoEvent) = when (event) {
@@ -78,10 +79,23 @@ class RepoActivity : AppCompatActivity(), StateViewActionDispatcher {
 
     private fun tryAgain() {
         repoAdapter.retry()
+
+        //TODO: Should I move this to the VM
+        if (binder.state.isVisible) {
+            binder.state.isVisible = false
+            binder.loadingRepo.isVisible = true
+        }
+    }
+
+    private fun onSuccessState() {
+        binder.loadingRepo.isVisible = false
+        binder.state.isVisible = false
+        binder.rvRepo.isVisible = true
     }
 
     private fun onEmptyState(state: RepoSate.EmptyState) {
         binder.state.isVisible = true
+        binder.loadingRepo.isVisible = false
 
         binder.state.prepareLayout(state.state)
     }

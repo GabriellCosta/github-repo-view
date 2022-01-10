@@ -19,4 +19,14 @@ internal class StateViewFactory(
             action = RepoAction.TryAgain
         )
     )
+
+    fun genericError() =
+        StateViewArg(
+            type = StateViewType.Empty(),
+            title = resources.getString(R.string.repositories_state_generic_title),
+            positiveButton = ButtonViewArg(
+                text = resources.getString(R.string.repositories_state_generic_button_positive),
+                action = RepoAction.TryAgain
+            )
+        )
 }

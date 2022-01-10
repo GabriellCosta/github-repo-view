@@ -7,6 +7,7 @@ import me.tigrao.github.repo.domain.FetchRepositoryErrorMapper
 import me.tigrao.github.repo.domain.FetchRepositorySuccessMapper
 import me.tigrao.github.repo.domain.FetchRepositoryUseCase
 import me.tigrao.github.repo.domain.FetchRepositoryUseCaseImpl
+import me.tigrao.github.repo.presentation.PagerProvider
 import me.tigrao.github.repo.presentation.RepoViewModel
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
@@ -35,6 +36,10 @@ val repoModule = module {
 
     viewModel {
         RepoViewModel(get())
+    }
+
+    factory {
+        PagerProvider(get())
     }
 
     single {

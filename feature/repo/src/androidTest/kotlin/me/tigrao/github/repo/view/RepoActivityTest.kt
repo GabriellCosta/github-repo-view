@@ -3,20 +3,23 @@ package me.tigrao.github.repo.view
 import androidx.paging.PagingData
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import io.mockk.every
 import io.mockk.mockk
+import io.mockk.verify
 import kotlinx.coroutines.flow.flowOf
 import me.tigrao.github.repo.R
 import me.tigrao.github.repo.domain.model.RepositoryDataModel
 import me.tigrao.github.repo.presentation.PagerProvider
 import me.tigrao.github.repo.presentation.RepoViewModel
+import me.tigrao.github.repo.presentation.StateViewFactory
+import me.tigrao.github.repo.presentation.model.RepoAction
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
-import org.hamcrest.CoreMatchers.not
 import org.junit.After
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -59,7 +62,31 @@ class RepoActivityTest {
             .check(matches(isDisplayed()))
     }
 
-    fun prepare() {
+    @Test
+    fun givenInitialState_WhenListEmpty_ShouldShowEmptyState() {
+        prepare(list = emptyList())
+
+        ActivityScenario.launch(RepoActivity::class.java)
+
+        onView(withId(R.id.state))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun givenInitialState_WhenListEmpty_RetryShouldTriggerAction() {
+        prepare(list = emptyList())
+
+        ActivityScenario.launch(RepoActivity::class.java)
+
+        onView(withId(R.id.btn_view_state_action))
+            .perform(click())
+
+        verify(exactly = 1) {
+            viewModel.dispatch(RepoAction.TryAgain)
+        }
+    }
+
+    private fun createList(): List<RepositoryDataModel> {
         val list = mutableListOf<RepositoryDataModel>()
 
         repeat(10) {
@@ -75,10 +102,23 @@ class RepoActivityTest {
             list.add(item)
         }
 
+        return list
+    }
+
+    private fun prepare(
+        list: List<RepositoryDataModel> = createList()
+    ) {
         every { pagerProvider.providePager() } returns flowOf(PagingData.from(list))
 
-        viewModel = RepoViewModel(pagerProvider)
+        val stateViewFactory = mockk<StateViewFactory>()
+        every { stateViewFactory.emptyState() } returns mockk(relaxed = true)
 
+        viewModel = RepoViewModel(pagerProvider, stateViewFactory)
+
+        mockKoin()
+    }
+
+    private fun mockKoin() {
         koinApp = startKoin {}
 
         loadKoinModules(module {

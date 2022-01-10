@@ -9,6 +9,7 @@ import me.tigrao.github.repo.domain.FetchRepositoryUseCase
 import me.tigrao.github.repo.domain.FetchRepositoryUseCaseImpl
 import me.tigrao.github.repo.presentation.PagerProvider
 import me.tigrao.github.repo.presentation.RepoViewModel
+import me.tigrao.github.repo.presentation.StateViewFactory
 import me.tigrao.github.repo.view.adapter.LayoutManagerFactory
 import me.tigrao.github.repo.view.adapter.RepoAdapter
 import org.koin.android.ext.koin.androidContext
@@ -35,7 +36,11 @@ val repoModule = module {
     }
 
     viewModel {
-        RepoViewModel(get())
+        RepoViewModel(get(), get())
+    }
+
+    factory {
+        StateViewFactory(androidContext().resources)
     }
 
     factory {
